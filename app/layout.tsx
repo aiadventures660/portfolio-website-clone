@@ -28,7 +28,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable} antialiased`}>
-      <body className="bg-black text-white min-h-screen">{children}</body>
+      <body className="bg-black text-white min-h-screen" suppressHydrationWarning={true}>
+        {children}
+      </body>
     </html>
   )
 }

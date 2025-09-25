@@ -9,8 +9,8 @@ export function Footer() {
           <div className="flex items-center gap-4">
             <div className="w-10 h-10 rounded-full overflow-hidden border border-white/10">
               <Image
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%20%2842%29-YC8qEQrRfMvYbVAsTxuDYpDGr2uMa4.png"
-                alt="Pankaj Singh"
+                src="/modern-dev-profile.png"
+                alt="Pankaj Singh - Modern Developer"
                 width={40}
                 height={40}
                 className="object-cover"

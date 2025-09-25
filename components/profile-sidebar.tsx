@@ -10,8 +10,8 @@ export function ProfileSidebar() {
       {/* Profile Image */}
       <div className="relative aspect-square rounded-3xl overflow-hidden mb-5 border border-white/10">
         <Image
-          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/cl6KEKFpRiepoMTAZYRysjuDM.jpg-Wm0X5JdlGzJCsqtic9B5tYZjkpBHR4.jpeg"
-          alt="Pankaj Singh"
+          src="/modern-dev-profile.png"
+          alt="Pankaj Singh - Modern Developer"
           fill
           className="object-cover"
         />
