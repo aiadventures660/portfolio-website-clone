@@ -6,15 +6,15 @@ import { Textarea } from "@/components/ui/textarea"
 const contactDetails = [
   {
     label: "Contact No",
-    value: "+(02) 4057 2930",
+    value: "+91 9942193614",
     icon: Phone,
-    href: "tel:+(02) 4057 2930",
+    href: "tel:+919942193614",
   },
   {
     label: "Email",
-    value: "ANDREW@WEBSITE.COM",
+    value: "nrpgroup.pvt@gmail.com",
     icon: Mail,
-    href: "mailto:andrew@website.com",
+    href: "mailto:nrpgroup.pvt@gmail.com",
   },
   {
     label: "Address",

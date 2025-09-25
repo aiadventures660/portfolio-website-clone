@@ -1,3 +1,5 @@
+"use client"
+
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Instagram, Twitter, Youtube, Dribbble, Bean as Behance, Download, MessageCircle } from "lucide-react"
@@ -76,7 +78,10 @@ export function ProfileSidebar() {
             <Download className="w-4 h-4 mr-2" />
             Download CV
           </Button>
-          <Button className="flex-1 btn-primary rounded-lg hover:bg-green-400">
+          <Button 
+            className="flex-1 btn-primary rounded-lg hover:bg-green-400"
+            onClick={() => window.open('tel:+919942193614', '_self')}
+          >
             <MessageCircle className="w-4 h-4 mr-2" />
             Contact Me
           </Button>

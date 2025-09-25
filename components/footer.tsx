@@ -17,11 +17,19 @@ export function Footer() {
               />
             </div>
             {/* Signature */}
-            <div className="text-gray-400 font-script text-lg">John Anderson</div>
+            <div className="text-gray-400 font-script text-lg">Pankaj Singh</div>
           </div>
 
-          {/* Built with Framer */}
-          <div className="text-gray-500 text-sm">Built with ❤️</div>
+          {/* Contact Info */}
+          <div className="flex flex-col lg:flex-row items-center gap-4">
+            <a 
+              href="tel:+919942193614" 
+              className="text-gray-400 hover:text-green-400 transition-colors text-sm"
+            >
+              +91 9942193614
+            </a>
+            <div className="text-gray-500 text-sm">Built with ❤️</div>
+          </div>
         </div>
       </div>
     </footer>
