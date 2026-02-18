@@ -29,11 +29,11 @@ const experiences = [
 
 export function ExperienceSection() {
   return (
-    <section className="space-y-6">
+    <section id="experience" className="space-y-6">
       {/* Section Header */}
       <div className="flex items-center gap-3">
-        <Briefcase className="w-6 h-6 text-white" />
-        <h2 className="text-2xl font-semibold font-space-grotesk text-white">Experience</h2>
+        <Briefcase className="w-6 h-6 text-foreground" />
+        <h2 className="text-2xl font-semibold font-space-grotesk text-foreground">Experience</h2>
       </div>
 
       {/* Experience List */}
@@ -43,20 +43,22 @@ export function ExperienceSection() {
             {/* Header */}
             <div className="flex items-start justify-between">
               <div className="flex items-center gap-4 flex-1">
-                <exp.icon className="w-6 h-6 text-green-400 flex-shrink-0" />
+                <exp.icon className="w-6 h-6 text-[color:var(--brand)] flex-shrink-0" />
                 <div className="flex-1">
-                  <h3 className="text-lg font-semibold text-white font-space-grotesk">{exp.title}</h3>
-                  <p className="text-gray-400 text-sm">{exp.company}</p>
+                  <h3 className="text-lg font-semibold text-foreground font-space-grotesk">{exp.title}</h3>
+                  <p className="text-muted-foreground text-sm">{exp.company}</p>
                 </div>
               </div>
-              <div className="bg-gray-800 px-3 py-1 rounded text-sm text-white">{exp.period}</div>
+              <div className="bg-white/5 border border-white/10 px-3 py-1 rounded text-sm text-white backdrop-blur-md">
+                {exp.period}
+              </div>
             </div>
 
             {/* Divider */}
-            <div className="h-px bg-gray-700"></div>
+            <div className="h-px bg-border/60"></div>
 
             {/* Description */}
-            <p className="text-gray-400 leading-relaxed">{exp.description}</p>
+            <p className="text-muted-foreground leading-relaxed">{exp.description}</p>
           </div>
         ))}
       </div>

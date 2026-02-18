@@ -1,13 +1,10 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Inter, Space_Grotesk } from "next/font/google"
+import { Space_Grotesk } from "next/font/google"
+import { GeistSans } from "geist/font/sans"
 import "./globals.css"
-
-const inter = Inter({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-inter",
-})
+import { SmoothScroll } from "@/components/smooth-scroll"
+import { ThemeProvider } from "@/components/theme-provider"
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -27,9 +24,11 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable} antialiased`}>
-      <body className="bg-black text-white min-h-screen" suppressHydrationWarning={true}>
-        {children}
+    <html lang="en" className={`${GeistSans.variable} ${spaceGrotesk.variable} antialiased`} suppressHydrationWarning>
+      <body className="min-h-screen" suppressHydrationWarning={true}>
+        <ThemeProvider attribute="class" defaultTheme="dark">
+          <SmoothScroll>{children}</SmoothScroll>
+        </ThemeProvider>
       </body>
     </html>
   )

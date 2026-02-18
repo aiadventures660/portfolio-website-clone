@@ -3,14 +3,18 @@
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Instagram, Twitter, Youtube, Dribbble, Bean as Behance, Download, MessageCircle } from "lucide-react"
+import { ModeToggle } from "@/components/mode-toggle"
 
 export function ProfileSidebar() {
   return (
     <div className="profile-card rounded-3xl p-5 max-w-sm mx-auto lg:max-w-none">
+      <div className="flex items-center justify-end mb-3">
+        <ModeToggle />
+      </div>
       {/* Profile Image */}
-      <div className="relative aspect-square rounded-3xl overflow-hidden mb-5 border border-white/10">
+      <div className="relative h-89 rounded-3xl overflow-hidden mb-5 border border-white/10">
         <Image
-          src="/modern-dev-profile.png"
+          src="/profile.png"
           alt="Pankaj Singh - Modern Developer"
           fill
           className="object-cover"
@@ -20,13 +24,13 @@ export function ProfileSidebar() {
       {/* Profile Content */}
       <div className="text-center space-y-5">
         {/* Available Badge */}
-        <div className="inline-flex items-center gap-2 px-3 py-2 rounded-lg border border-white/12 text-sm">
-          <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+        <div className="inline-flex items-center gap-2 px-3 py-2 rounded-lg border border-border/60 text-sm bg-white/5 backdrop-blur-md">
+          <div className="w-2 h-2 rounded-full bg-[color:var(--brand)]"></div>
           Available for work
         </div>
 
         {/* Name */}
-        <h2 className="text-2xl font-semibold font-space-grotesk">Pankaj Singh</h2>
+        <h2 className="text-2xl font-semibold font-space-grotesk text-foreground">Pankaj Singh</h2>
 
         {/* Social Links */}
         <div className="flex justify-center gap-2">
@@ -73,16 +77,21 @@ export function ProfileSidebar() {
         </div>
 
         {/* Action Buttons */}
-        <div className="flex gap-2">
-          <Button variant="secondary" className="flex-1 btn-secondary rounded-lg">
-            <Download className="w-4 h-4 mr-2" />
+        <div className="flex justify-center gap-4">
+          <a
+            href="/cv.pdf"
+            download
+            className="rounded-lg h-10 px-6 text-sm font-medium flex items-center gap-1 bg-white text-neutral-800 border border-neutral-200 shadow-sm hover:bg-neutral-100 transition"
+            style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+          >
+            <Download className="w-5 h-5 mr-1" />
             Download CV
-          </Button>
-          <Button 
-            className="flex-1 btn-primary rounded-lg hover:bg-green-400"
+          </a>
+          <Button
+            className="btn-primary rounded-lg h-10 px-6 text-sm font-medium flex items-center gap-1"
             onClick={() => window.open('tel:+919942193614', '_self')}
           >
-            <MessageCircle className="w-4 h-4 mr-2" />
+            <MessageCircle className="w-5 h-5 mr-1" />
             Contact Me
           </Button>
         </div>

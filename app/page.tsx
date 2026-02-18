@@ -1,4 +1,5 @@
 import { ProfileSidebar } from "@/components/profile-sidebar"
+import { Header } from "@/components/header"
 import { AboutSection } from "@/components/about-section"
 import { ExperienceSection } from "@/components/experience-section"
 import { ProjectsSection } from "@/components/projects-section"
@@ -9,11 +10,12 @@ import { Footer } from "@/components/footer"
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen">
+      <Header />
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col lg:flex-row gap-16 lg:gap-20 p-10 lg:p-16">
           {/* Profile Sidebar */}
-          <div className="lg:w-80 lg:sticky lg:top-16 lg:self-start">
+          <div className="lg:w-80 lg:sticky lg:top-28 lg:self-start">
             <ProfileSidebar />
           </div>
 

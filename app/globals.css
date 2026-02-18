@@ -1,3 +1,103 @@
+/* Glowing corner effect for profile-card */
+.profile-card {
+  position: relative;
+}
+.profile-card::after {
+  content: "";
+  position: absolute;
+  top: -32px;
+  right: -32px;
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle at 70% 30%, var(--brand) 0%, transparent 75%);
+  opacity: 0.75;
+  filter: blur(28px) brightness(1.5);
+  pointer-events: none;
+  z-index: 1;
+  border-radius: 50%;
+  transition: opacity 0.2s, filter 0.2s;
+}
+.profile-card:hover::after {
+  opacity: 0.95;
+  filter: blur(36px) brightness(1.7);
+}
+/* Solid brand color button for Hire Me */
+.btn-solid-brand {
+  border-radius: 9999px;
+  background: var(--brand);
+  color: #fff;
+  border: 2px solid var(--brand);
+  box-shadow: 0 4px 32px 0 rgba(59,130,246,0.13);
+  transition: transform 0.18s cubic-bezier(.4,2,.6,1), box-shadow 0.18s, filter 0.18s;
+}
+.btn-solid-brand:hover {
+  filter: brightness(1.10);
+  transform: scale(1.07) translateY(-2px);
+  box-shadow: 0 8px 32px 0 rgba(59,130,246,0.22);
+}
+/* Animated premium contact button */
+.btn-animated-contact {
+  border-radius: 9999px;
+  background: rgba(255,255,255,0.18);
+  color: #fff;
+  border: 0;
+  box-shadow: 0 4px 32px 0 rgba(59,130,246,0.13);
+  transition: transform 0.18s cubic-bezier(.4,2,.6,1), box-shadow 0.18s;
+  position: relative;
+  z-index: 1;
+}
+.btn-animated-contact:hover {
+  transform: scale(1.07) translateY(-2px);
+  box-shadow: 0 8px 32px 0 rgba(59,130,246,0.22);
+  animation: bounceY 0.4s;
+}
+.btn-animated-contact .animated-gradient-border {
+  pointer-events: none;
+  border-radius: 9999px;
+  background: linear-gradient(270deg, #3b82f6, #60a5fa, #a5b4fc, #3b82f6);
+  background-size: 400% 400%;
+  filter: blur(6px) brightness(1.2);
+  opacity: 0.85;
+  animation: border-gradient-move 3s linear infinite;
+  z-index: 0;
+}
+@keyframes border-gradient-move {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+@keyframes bounceY {
+  0% { transform: scale(1) translateY(0); }
+  30% { transform: scale(1.09,0.95) translateY(-4px); }
+  50% { transform: scale(0.98,1.03) translateY(2px); }
+  70% { transform: scale(1.03,0.97) translateY(-2px); }
+  100% { transform: scale(1.07) translateY(-2px); }
+}
+/* Premium Contact Button */
+.btn-premium-contact {
+  position: relative;
+  background: linear-gradient(120deg, rgba(255,255,255,0.22) 60%, rgba(59,130,246,0.13) 100%);
+  color: var(--brand);
+  border-radius: 0.75rem;
+  border: 2px solid transparent;
+  box-shadow: 0 4px 32px 0 rgba(59,130,246,0.10);
+  overflow: hidden;
+  transition: box-shadow 0.2s, border-color 0.2s, transform 0.2s;
+}
+.btn-premium-contact:hover {
+  border-color: var(--brand);
+  box-shadow: 0 0 24px 4px var(--brand);
+  transform: scale(1.05);
+}
+.btn-premium-contact .animate-gradient-x {
+  background: linear-gradient(270deg, var(--brand), transparent, var(--brand));
+  background-size: 200% 100%;
+  animation: premium-gradient-x 2.5s linear infinite;
+}
+@keyframes premium-gradient-x {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -35,6 +135,12 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+
+  --brand: #3b82f6;
+
+  --app-bg-1: rgba(59, 130, 246, 0.12);
+  --app-bg-2: rgba(0, 0, 0, 0.06);
+  --app-bg-3: rgba(59, 130, 246, 0.08);
 }
 
 .dark {
@@ -70,6 +176,13 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(0.269 0 0);
   --sidebar-ring: oklch(0.439 0 0);
+
+  --brand: #3b82f6;
+
+  --app-bg-1: rgba(59, 130, 246, 0.14);
+  --app-bg-2: rgba(255, 255, 255, 0.06);
+  --app-bg-3: rgba(59, 130, 246, 0.08);
+    --dark-gradient: linear-gradient(135deg, #0a1837 0%, #1e335c 40%, var(--brand) 100%);
 }
 
 @theme inline {
@@ -121,13 +234,95 @@
 }
 
 /* Custom styles for the portfolio design */
+html {
+  scroll-behavior: auto;
+}
+
 body {
-  background-color: #000000;
-  color: #ffffff;
+  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial,
+    "Noto Sans", "Liberation Sans", sans-serif;
+  background:
+    radial-gradient(900px circle at 12% 10%, var(--app-bg-1), transparent 55%),
+    radial-gradient(800px circle at 85% 18%, var(--app-bg-2), transparent 60%),
+    radial-gradient(900px circle at 40% 100%, var(--app-bg-3), transparent 55%),
+    hsl(var(--background));
+  overflow-x: hidden;
+}
+
+@media (min-width: 640px) {
+  body::before {
+    content: "";
+    position: fixed;
+    z-index: 0;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    background:
+      radial-gradient(ellipse 60% 30% at 60% 0%, rgba(59,130,246,0.13) 0%, transparent 100%),
+      radial-gradient(ellipse 40% 20% at 20% 100%, rgba(59,130,246,0.11) 0%, transparent 100%);
+    animation: bg-move 14s linear infinite alternate;
+    opacity: 0.92;
+  }
+}
+
+  .dark body {
+    position: relative;
+    background:
+      linear-gradient(135deg, #0a1837 0%, #1e335c 40%, var(--brand) 100%) 0 0/100% 100% no-repeat,
+      radial-gradient(900px circle at 12% 10%, var(--app-bg-1), transparent 55%),
+      radial-gradient(800px circle at 85% 18%, var(--app-bg-2), transparent 60%),
+      radial-gradient(900px circle at 40% 100%, var(--app-bg-3), transparent 55%),
+      hsl(var(--background));
+    overflow-x: hidden;
+  }
+
+  @media (min-width: 640px) {
+    .dark body::before {
+      content: "";
+      position: fixed;
+      z-index: 0;
+      left: 0;
+      top: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse 60% 30% at 60% 0%, rgba(59,130,246,0.23) 0%, transparent 100%),
+        radial-gradient(ellipse 40% 20% at 20% 100%, rgba(59,130,246,0.17) 0%, transparent 100%);
+      animation: bg-move 12s linear infinite alternate;
+      opacity: 0.97;
+    }
+  }
+
+  @keyframes bg-move {
+    0% {
+      transform: translateY(0) scale(1);
+      opacity: 0.85;
+    }
+    100% {
+      transform: translateY(-30px) scale(1.04);
+      opacity: 1;
+    }
+  }
+
+.font-space-grotesk {
+  font-family: var(--font-space-grotesk), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial,
+    "Noto Sans", "Liberation Sans", sans-serif;
+}
+
+/* Lenis helper styles */
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
 }
 
 .typing-animation {
-  border-right: 4px solid #28e98c;
+  border-right: 4px solid var(--brand);
   animation: blink 1s step-start infinite;
 }
 
@@ -138,30 +333,171 @@ body {
 }
 
 .profile-card {
-  background-color: #101010;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.62), rgba(255, 255, 255, 0.45));
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+}
+
+.dark .profile-card {
+  background: linear-gradient(180deg, rgba(18, 18, 18, 0.62), rgba(10, 10, 10, 0.45));
+  border: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .experience-card,
 .project-card,
 .education-card,
 .skill-card {
-  background-color: #101010;
-  border: 1px solid #303030;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.4));
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+}
+
+.dark .experience-card,
+.dark .project-card,
+.dark .education-card,
+.dark .skill-card {
+  background: linear-gradient(180deg, rgba(18, 18, 18, 0.55), rgba(10, 10, 10, 0.4));
+  border: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .contact-detail {
-  background-color: #101010;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.4));
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+}
+
+.dark .contact-detail {
+  background: linear-gradient(180deg, rgba(18, 18, 18, 0.55), rgba(10, 10, 10, 0.4));
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* Premium card polish */
+.profile-card,
+.experience-card,
+.project-card,
+.education-card,
+.skill-card,
+.contact-detail {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.08);
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+
+.dark .profile-card,
+.dark .experience-card,
+.dark .project-card,
+.dark .education-card,
+.dark .skill-card,
+.dark .contact-detail {
+  box-shadow: 0 18px 70px rgba(0, 0, 0, 0.35);
+}
+
+.profile-card::after,
+.experience-card::after,
+.project-card::after,
+.education-card::after,
+.skill-card::after,
+.contact-detail::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(700px circle at 10% 0%, color-mix(in srgb, var(--brand) 18%, transparent), transparent 55%),
+    radial-gradient(650px circle at 100% 10%, rgba(255, 255, 255, 0.22), transparent 58%);
+  opacity: 0.55;
+  z-index: 0;
+}
+
+.dark .profile-card::after,
+.dark .experience-card::after,
+.dark .project-card::after,
+.dark .education-card::after,
+.dark .skill-card::after,
+.dark .contact-detail::after {
+  background:
+    radial-gradient(700px circle at 10% 0%, color-mix(in srgb, var(--brand) 22%, transparent), transparent 55%),
+    radial-gradient(650px circle at 100% 10%, rgba(255, 255, 255, 0.08), transparent 58%);
+  opacity: 0.65;
+}
+
+.profile-card::before,
+.experience-card::before,
+.project-card::before,
+.education-card::before,
+.skill-card::before,
+.contact-detail::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(120deg, transparent 0%, rgba(255, 255, 255, 0.45) 35%, transparent 65%);
+  opacity: 0;
+  transform: translateX(-18%);
+  transition: opacity 220ms ease, transform 220ms ease;
+  z-index: 0;
+}
+
+.profile-card > *,
+.experience-card > *,
+.project-card > *,
+.education-card > *,
+.skill-card > *,
+.contact-detail > * {
+  position: relative;
+  z-index: 1;
+}
+
+.profile-card:hover,
+.experience-card:hover,
+.project-card:hover,
+.education-card:hover,
+.skill-card:hover,
+.contact-detail:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.12);
+  border-color: color-mix(in srgb, var(--brand) 35%, rgba(0, 0, 0, 0.08));
+}
+
+.dark .profile-card:hover,
+.dark .experience-card:hover,
+.dark .project-card:hover,
+.dark .education-card:hover,
+.dark .skill-card:hover,
+.dark .contact-detail:hover {
+  box-shadow: 0 28px 95px rgba(0, 0, 0, 0.45);
+  border-color: color-mix(in srgb, var(--brand) 35%, rgba(255, 255, 255, 0.12));
+}
+
+.profile-card:hover::before,
+.experience-card:hover::before,
+.project-card:hover::before,
+.education-card:hover::before,
+.skill-card:hover::before,
+.contact-detail:hover::before {
+  opacity: 0.55;
+  transform: translateX(18%);
 }
 
 .form-input {
-  background-color: #101010;
-  border: 1px solid #303030;
-  color: #ffffff;
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(0, 0, 0, 0.10);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+}
+
+.dark .form-input {
+  background: rgba(16, 16, 16, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.14);
 }
 
 .form-input:focus {
-  border-color: #28e98c;
+  border-color: var(--brand);
   outline: none;
 }
 
@@ -170,17 +506,34 @@ body {
 }
 
 .btn-primary {
-  background-color: #28e98c;
-  color: #000000;
+  background-color: var(--brand);
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  filter: brightness(1.05);
 }
 
 .btn-secondary {
-  background-color: #1f1f1f;
+  background-color: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(10px) saturate(140%);
+  -webkit-backdrop-filter: blur(10px) saturate(140%);
+}
+
+.dark .btn-secondary {
+  background-color: rgba(31, 31, 31, 0.6);
   color: #bfbfbf;
 }
 
 .social-icon {
-  background-color: transparent;
+  background-color: rgba(255, 255, 255, 0.45);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(10px) saturate(140%);
+  -webkit-backdrop-filter: blur(10px) saturate(140%);
+}
+
+.dark .social-icon {
+  background-color: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.12);
 }
 

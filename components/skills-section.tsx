@@ -36,11 +36,11 @@ const skills = [
 
 export function SkillsSection() {
   return (
-    <section className="space-y-6">
+    <section id="skills" className="space-y-6">
       {/* Section Header */}
       <div className="flex items-center gap-3">
-        <Layers className="w-6 h-6 text-white" />
-        <h2 className="text-2xl font-semibold font-space-grotesk text-white">Stakes</h2>
+        <Layers className="w-6 h-6 text-foreground" />
+        <h2 className="text-2xl font-semibold font-space-grotesk text-foreground">Stakes</h2>
       </div>
 
       {/* Skills Grid */}
@@ -57,8 +57,8 @@ export function SkillsSection() {
               />
             </div>
             <div className="flex-1">
-              <h3 className="text-lg font-semibold text-white font-space-grotesk">{skill.name}</h3>
-              <p className="text-gray-400 text-sm">{skill.category}</p>
+              <h3 className="text-lg font-semibold text-foreground font-space-grotesk">{skill.name}</h3>
+              <p className="text-muted-foreground text-sm">{skill.category}</p>
             </div>
           </div>
         ))}

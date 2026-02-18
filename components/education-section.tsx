@@ -19,11 +19,11 @@ const education = [
 
 export function EducationSection() {
   return (
-    <section className="space-y-6">
+    <section id="education" className="space-y-6">
       {/* Section Header */}
       <div className="flex items-center gap-3">
-        <GraduationCap className="w-6 h-6 text-white" />
-        <h2 className="text-2xl font-semibold font-space-grotesk text-white">Education</h2>
+        <GraduationCap className="w-6 h-6 text-foreground" />
+        <h2 className="text-2xl font-semibold font-space-grotesk text-foreground">Education</h2>
       </div>
 
       {/* Education List */}
@@ -33,17 +33,19 @@ export function EducationSection() {
             {/* Header */}
             <div className="flex items-start justify-between">
               <div className="flex-1">
-                <h3 className="text-lg font-semibold text-white font-space-grotesk">{edu.title}</h3>
-                <p className="text-gray-400 text-sm">{edu.institution}</p>
+                <h3 className="text-lg font-semibold text-foreground font-space-grotesk">{edu.title}</h3>
+                <p className="text-muted-foreground text-sm">{edu.institution}</p>
               </div>
-              <div className="bg-gray-800 px-3 py-1 rounded text-sm text-white">{edu.period}</div>
+              <div className="bg-white/5 border border-white/10 px-3 py-1 rounded text-sm text-foreground backdrop-blur-md">
+                {edu.period}
+              </div>
             </div>
 
             {/* Divider */}
-            <div className="h-px bg-gray-700"></div>
+            <div className="h-px bg-border/60"></div>
 
             {/* Description */}
-            <p className="text-gray-400 leading-relaxed">{edu.description}</p>
+            <p className="text-muted-foreground leading-relaxed">{edu.description}</p>
           </div>
         ))}
       </div>

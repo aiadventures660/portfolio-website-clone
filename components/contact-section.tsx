@@ -29,12 +29,12 @@ export function ContactSection() {
     <section id="contact" className="space-y-6">
       {/* Section Header */}
       <div className="flex items-center gap-3">
-        <MessageSquare className="w-6 h-6 text-white" />
-        <h2 className="text-2xl font-semibold font-space-grotesk text-white">Contact</h2>
+        <MessageSquare className="w-6 h-6 text-foreground" />
+        <h2 className="text-2xl font-semibold font-space-grotesk text-foreground">Contact</h2>
       </div>
 
       {/* Contact Heading */}
-      <h3 className="text-4xl lg:text-5xl font-medium font-space-grotesk text-white">Let's Get in Touch!</h3>
+      <h3 className="text-4xl lg:text-5xl font-medium font-space-grotesk text-foreground">Let's Get in Touch!</h3>
 
       {/* Contact Content */}
       <div className="flex flex-col lg:flex-row gap-8">
@@ -46,14 +46,14 @@ export function ContactSection() {
               href={detail.href}
               target="_blank"
               rel="noreferrer noopener"
-              className="contact-detail rounded-lg p-3 flex items-center gap-3 hover:bg-gray-900/50 transition-colors"
+              className="contact-detail rounded-lg p-3 flex items-center gap-3 transition-colors"
             >
-              <div className="w-6 h-6 text-green-400 flex-shrink-0">
+              <div className="w-6 h-6 text-[color:var(--brand)] flex-shrink-0">
                 <detail.icon className="w-full h-full" />
               </div>
               <div className="flex-1">
-                <p className="text-gray-400 text-sm">{detail.label}</p>
-                <p className="text-white font-medium">{detail.value}</p>
+                <p className="text-muted-foreground text-sm">{detail.label}</p>
+                <p className="text-foreground font-medium">{detail.value}</p>
               </div>
             </a>
           ))}
@@ -64,24 +64,26 @@ export function ContactSection() {
           <form className="space-y-4">
             <Input
               placeholder="Full Name"
-              className="form-input rounded-lg h-12 bg-gray-900 border-gray-700 text-white placeholder:text-gray-500 focus:border-green-400"
+              className="form-input rounded-lg h-12 placeholder:text-muted-foreground focus:border-[color:var(--brand)]"
             />
             <Input
               type="email"
               placeholder="Email"
-              className="form-input rounded-lg h-12 bg-gray-900 border-gray-700 text-white placeholder:text-gray-500 focus:border-green-400"
+              className="form-input rounded-lg h-12 placeholder:text-muted-foreground focus:border-[color:var(--brand)]"
             />
             <Input
               type="tel"
               placeholder="Phone Number"
-              className="form-input rounded-lg h-12 bg-gray-900 border-gray-700 text-white placeholder:text-gray-500 focus:border-green-400"
+              className="form-input rounded-lg h-12 placeholder:text-muted-foreground focus:border-[color:var(--brand)]"
             />
             <Textarea
               placeholder="Message"
               rows={5}
-              className="form-input rounded-lg bg-gray-900 border-gray-700 text-white placeholder:text-gray-500 focus:border-green-400 resize-none"
+              className="form-input rounded-lg placeholder:text-muted-foreground focus:border-[color:var(--brand)] resize-none"
             />
-            <Button className="w-full btn-primary rounded-lg h-12 hover:bg-green-400 font-medium">Send Message</Button>
+            <div className="flex justify-center">
+              <Button className="btn-primary rounded-lg h-12 font-medium px-8">Send Message</Button>
+            </div>
           </form>
         </div>
       </div>

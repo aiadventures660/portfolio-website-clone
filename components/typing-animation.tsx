@@ -8,8 +8,8 @@ export function TypingAnimation({
   pauseDuration = 3000,
   fontSize = 48,
   fontWeight = "500",
-  textColor = "#28e98c",
-  cursorColor = "#28e98c",
+  textColor = "var(--brand)",
+  cursorColor = "var(--brand)",
   cursorHeightFactor = 0.8,
   cursorWidth = 2,
 }: {
